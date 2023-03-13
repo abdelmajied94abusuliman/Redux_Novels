@@ -20,7 +20,7 @@ switch($method){
         $password = $_POST['password'];
         $phone = $_POST['phone'];
         $path = explode('/' , $_SERVER['REQUEST_URI']);
-        $user_id = $path[4];
+        $email = $path[4];
         if($_FILES["file"] == null){
         $file = "";
         } else {
@@ -48,7 +48,7 @@ switch($method){
                 if($name != ""){$sql .= "name = ? , ";}
                 if($password != ""){$sql .= " password = ? , ";}
                 if($phone != ""){$sql .= " mobile = ? , ";}
-                $sql .= " image = ? WHERE id = ? ";
+                $sql .= " image = ? WHERE email = ? ";
                 $query = $conn->prepare($sql);
                 $userArray = [$name  , $password , $phone];
                 $updateArray = [];
@@ -58,7 +58,7 @@ switch($method){
                     }
                 }
                 array_push($updateArray ,$fileName);
-                array_push($updateArray ,$user_id);
+                array_push($updateArray ,$email);
                 print_r($updateArray);
                 $query->execute([...$updateArray]);
 
@@ -71,8 +71,8 @@ switch($method){
                 if($name != ""){$sql .= " name = ? ,";}
                 if($password != ""){$sql .= " password = ? ,";}
                 if($phone != ""){$sql .= " mobile = ?,";}  
-                $sql .= " WHERE id = ? ";
-                $stmt = substr_replace($sql,"",-15 , -14);
+                $sql .= " WHERE email = ? ";
+                $stmt = substr_replace($sql,"",-18 , -17);
                 $query = $conn->prepare($stmt);
                 $userArray = [$name , $password , $phone];
                 $updateArray = [];
@@ -81,7 +81,7 @@ switch($method){
                         array_push($updateArray ,$userArray[$i]);
                     }
                 }
-                array_push($updateArray ,$user_id);
+                array_push($updateArray ,$email);
                 $query->execute([...$updateArray]);
             break;
         }

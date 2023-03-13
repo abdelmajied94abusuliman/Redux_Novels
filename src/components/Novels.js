@@ -50,11 +50,6 @@ function Novels() {
         setSearch(value)
     }
 
-
-    function toggle () {
-      document.getElementById("fade").classList.toggle("hide");
-    }
-
     return (
    <>
     <Navbar id="navBarContainer">
@@ -80,9 +75,13 @@ function Novels() {
       <div className="align-item center figureWEB">
         {novels.map((item , index)=>{
           return(
-            <div id="fade" onMouseOver={toggle} style={{marginBottom: '4vw'}}>
+            <div style={{marginBottom: '4vw'}}>
               <img src={require(`../images/${item.image}`)} class="figure-img img-fluid rounded imagees" alt="..." />
               <p class="figure-caption" style={{width : '18vw' , direction : 'ltr' , color : '#f9a504'}}>{item['name']} - {item.author}</p>
+              {/* <div style={{display : 'grid' , gridTemplateColumns : '1fr 1fr'}}>
+                  <button>Edit</button>
+                  <button>Delete</button>
+              </div> */}
               <p class="figure-caption" style={{width : '18vw' , direction : 'ltr' , color : 'white'}}>{item['description']}</p>
             </div>
             )

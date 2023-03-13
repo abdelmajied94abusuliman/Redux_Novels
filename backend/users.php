@@ -12,8 +12,8 @@ switch ($method) {
         $sql = "SELECT * FROM users" ;
         $path = explode('/' , $_SERVER['REQUEST_URI']);
         
-        if(isset($path[4]) && is_numeric($path[4])){
-            $sql .= " WHERE id = ?";
+        if(isset($path[4]) && !is_numeric($path[4])){
+            $sql .= " WHERE email = ?";
             $query = $conn->prepare($sql);
             $query->execute([$path[4]]);
             $users = $query->fetch(PDO::FETCH_ASSOC);
@@ -23,17 +23,6 @@ switch ($method) {
             $users = $query->fetchAll(PDO::FETCH_ASSOC);
         }
         echo json_encode($users);
-        break;
-
-
-    case 'PUT' :
-        $users = json_decode(file_get_contents('php://input'));
-        // print_r($users);
-        echo ($users->id);
-        $sql = "UPDATE users SET name=? , mobile=? , password=?
-                WHERE id = ?" ;
-        $query = $connect->prepare($sql);
-        $query->execute([$users->name  , $users->phone , $users->password , $users->id]);
         break;
 
     case 'POST' :
@@ -58,7 +47,7 @@ switch ($method) {
 
 
     case 'DELETE' :
-        $sql = "DELETE FROM users WHERE id = ?" ;
+        $sql = "DELETE FROM users WHERE email = ?" ;
         $path = explode('/' , $_SERVER['REQUEST_URI']);
         if(isset($path[2]) && is_numeric($path[2])){
             $query = $connect->prepare($sql);

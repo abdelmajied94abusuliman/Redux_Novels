@@ -15,6 +15,7 @@ export default function EditProfile() {
     const [inputs , setInputs] = useState("");
     const [file, setFile] = useState(null);
     const [user , setUser] = useState([]);
+    const email = JSON.parse(localStorage.getItem('email'));
 
     
     useEffect(()=>{
@@ -22,7 +23,7 @@ export default function EditProfile() {
     } , [])
 
     function getUser(){
-        axios.get(`http://localhost/redux_project/backend/users.php/${id}`)
+        axios.get(`http://localhost/redux_project/backend/users.php/${email}`)
         .then(response => {
             console.log(response.data);
             setUser(response.data);
@@ -46,10 +47,10 @@ export default function EditProfile() {
       
         try {
           const response = await axios.post(
-            `http://localhost/redux_project/backend/editUserProfile.php/${id}`, formEditData
+            `http://localhost/redux_project/backend/editUserProfile.php/${email}`, formEditData
           );
           console.log(response.data);
-          // navigate(`/profile`);
+          navigate(`/profile`);
         //   window.location.assign(`/profile/${id}`);
         } catch (error) {
           console.error(error);
@@ -85,7 +86,7 @@ export default function EditProfile() {
     {/* <label htmlFor="">Email</label>
       <input /> */}
     <label htmlFor="">Phone</label>
-      <input type="number"  placeholder="phone"  name="phone" defaultValue={user.phone}  onChange={handleEditUser} />
+      <input type="number"  placeholder="phone"  name="phone" defaultValue={user.mobile}  onChange={handleEditUser} />
     <label htmlFor="">Password</label>
       <input  type="password"  placeholder="Email" name="password" defaultValue={user.password} onChange={handleEditUser} />
       <br/>
