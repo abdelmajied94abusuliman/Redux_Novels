@@ -10,8 +10,8 @@ import {logout} from '../actions/index'
 export default function Profile() {
 
     // const current_ID = JSON.parse(localStorage.getItem('id'));
-    const current_ID = 1;
-    // const user_email = localStorage.getItem('email');
+    // const current_ID = 1;
+    const email = JSON.parse(localStorage.getItem('email'));
 
     const [dataUsers,setDataUsers] = useState([]);
 
@@ -25,7 +25,7 @@ export default function Profile() {
       // لعرض  بيانات المستخدم في الموقع
   const getDataUsers = () => {
 
-    axios.get(`http://localhost/redux_project/backend/user.php/users/${current_ID}`)
+    axios.get(`http://localhost/redux_project/backend/user.php/users/${email}`)
     .then((respone)=>{
       setDataUsers(respone.data)
         console.log(respone.data);
@@ -51,12 +51,17 @@ export default function Profile() {
     {dataUsers.map((users,index)=>{
 
 return <div key={index}>
-<div id="landing" style={{paddingTop : '2vw'}}>
+<div id="landing" style={{paddingTop : '2vw' , height : '88vh'}}>
 <div className='parent'>
 <div className="wrapper">
         <div className="left">
           <h4>{users.name}</h4>
+          { ( users.image == 'a')
+          ?
+          <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="" /> 
+         :
           <img src={require(`../images/${users.image}`)} alt="" />
+         }
         </div>
         <div className="right profileShow">
           <div className="info">

@@ -21,6 +21,7 @@
     width: 5vw;
     height: 5vw;
     margin-left: 32vw;
+    cursor: pointer;
 }
 #addNovelDB {
     position: absolute;

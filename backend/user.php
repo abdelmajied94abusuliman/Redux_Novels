@@ -13,12 +13,12 @@ switch($method){
 
         $sql = "SELECT * FROM users";
         $path = explode('/',$_SERVER['REQUEST_URI']);
-        // print_r($path);break;
-        if(isset($path[5])&&is_numeric($path[5])){
+        // print_r($path[5]);break;
+        if(isset($path[5])&& !is_numeric($path[5])){
 
-            $sql .= "   WHERE id = :id";
+            $sql .= "   WHERE email = :email";
             $stmt =$conn->prepare($sql);
-            $stmt->bindParam(':id', $path[5]);
+            $stmt->bindParam(':email', $path[5]);
 
             $stmt->execute();
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -30,10 +30,10 @@ switch ($method) {
         $users = json_decode(file_get_contents('php://input'));
         // print_r($users);
         echo ($users->id);
-        $sql = "UPDATE users SET name=?  , email=? , password=?
+        $sql = "UPDATE users SET name=? , mobile=? , password=?
                 WHERE id = ?" ;
         $query = $connect->prepare($sql);
-        $query->execute([$users->name  , $users->email , $users->password , $users->id]);
+        $query->execute([$users->name  , $users->phone , $users->password , $users->id]);
         break;
 
     case 'POST' :

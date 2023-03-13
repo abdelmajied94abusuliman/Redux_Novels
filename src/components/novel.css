@@ -80,3 +80,18 @@
 #search::placeholder {
     font-size: 14px;
 }
+
+
+
+
+
+
+/* (A) SET CSS TRANSITION */
+#fade { transition: all 1s; }
+ 
+/* (B) HIDE */
+#fade.hide {
+  visibility: hidden;
+  opacity: 0;
+  height: 0; /* optional */
+}

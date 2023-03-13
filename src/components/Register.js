@@ -17,8 +17,7 @@ function Register() {
           document.getElementById("email-repeat").style.display = "block";
         } else {
         console.log(response.data)
-          localStorage.setItem("first_name",JSON.stringify(response.data.first_name));
-          localStorage.setItem("last_name",JSON.stringify(response.data.last_name));
+          localStorage.setItem("name",JSON.stringify(response.data.first_name));
           localStorage.setItem("id", JSON.stringify(response.data.id));
           localStorage.setItem("email", JSON.stringify(response.data.email));
           window.location.assign("/home")
@@ -34,7 +33,7 @@ function Register() {
     const name = e.target.name;
     const value = e.target.value;
 
-    if (name == "first_name") {
+    if (name == "name") {
       if (/\d/.test(value)) {
         document.getElementById("username-warining").style.display = "block";
         document.getElementById("username-accept").style.display = "none";
@@ -135,7 +134,7 @@ function Register() {
                               type="text"
                               id="firstName"
                               onChange={handleChange}
-                              name="first_name"
+                              name="name"
                               className="form-control"
                             />
                           </div>

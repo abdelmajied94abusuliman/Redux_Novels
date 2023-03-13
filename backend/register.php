@@ -26,16 +26,16 @@ switch ($method) {
         $checkEmail = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         if($checkEmail == []){
-            $sql = "INSERT INTO users (first_name , last_name , email , password)
-                    VALUES (  ? , ? , ? , ? )" ;
+            $sql = "INSERT INTO users (name , email , password)
+                    VALUES (  ? , ? , ?)" ;
             $query = $conn->prepare($sql);
-            $query->execute([$users->first_name , $users->last_name , $users->email , $users->password]);
+            $query->execute([$users->name , $users->email , $users->password]);
 
             $stmt2 = "SELECT * FROM users WHERE email = '$email'";
             $query2 = $conn->prepare($stmt2);
             $query2->execute();
             $getData = $query2->fetch(PDO::FETCH_ASSOC);
-            echo json_encode(['first_name'=>$getData['first_name'] , 'last_name'=>$getData['last_name'] , 'id'=>$getData['id'] , 'email'=>$getData['email'] ]);
+            echo json_encode(['name'=>$getData['name'] , 'id'=>$getData['id'] , 'email'=>$getData['email'] ]);
         } else {
             echo 'Your Email is Already Exist';
         }

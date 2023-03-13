@@ -121,38 +121,29 @@ body{
 
 
 .profileForm{
-    border: #5369f8 2px solid;
+    /* border: #5369f8 2px solid; */
     border-radius: 20px;
     margin-left: 500px;
-    margin-top: 100px;
     margin-right: 500px;
     padding:0 10px 10px 35px;
     font-size: 14px;
     background-color: whitesmoke;
   }
   .profileForm h1{
-    color: #5369f8;
-    margin-left: 136px;
-    margin-bottom: 35px;
+    color: whitesmoke;
   }
   
+  .profileForm label{
+    color: aliceblue;
+  }
   .profileForm input{
     display: block;
     margin-bottom: 25px;
     width: 90%;
     border-radius: 8px;
-    height: 25px;
+    height: 35px;
     margin-top: 5px;
     border: #5369f8 1px solid;
-  }
-  .profileForm button{
-    background-color: #5369f8;
-    color: #fff;
-    font-size: 15px;
-    border: none;
-    padding: 10px;
-    margin-left: 180px;
-    border-radius: 5px;
   }
   .account-block {
     padding: 0;

@@ -1,6 +1,7 @@
 
 import React, {useState} from 'react'
 import './Login.css'
+import { Link } from "react-router-dom";
 
 import {useSelector,useDispatch } from 'react-redux';
 import {login} from "../actions/index";
@@ -8,11 +9,13 @@ import {login} from "../actions/index";
 
 
 function Login() {
+  localStorage.clear();
     const dispatch=useDispatch();
     const admin=useSelector(state=>state.login.admin);
     const error=useSelector(state=>state.login.error);
 
         if(admin != ''){
+            localStorage.setItem('email' , JSON.stringify(admin))
             window.location.href = "/Home";
         }
     
@@ -49,6 +52,10 @@ const LoginFun=(e)=>{
     </div>
   </form>
   <div class="form-footer">
+  <div style={{ fontSize: "16px" , color : 'aliceblue' }}>
+                          You Don't Have Account Yet.{" "}
+                          <Link to="/register">Sign Up!</Link>
+                        </div>
   </div>
 </div>
 </>

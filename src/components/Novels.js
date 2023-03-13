@@ -35,9 +35,6 @@ function Novels() {
       })
     }
 
-
-
-
     function getSearch(e) {
       e.preventDefault();
       axios.get(`http://localhost/redux_project/backend/search.php/${search}`).then((response)=>{
@@ -51,6 +48,11 @@ function Novels() {
     const handleSearch = (e) => {
         const value = e.target.value;
         setSearch(value)
+    }
+
+
+    function toggle () {
+      document.getElementById("fade").classList.toggle("hide");
     }
 
     return (
@@ -78,7 +80,7 @@ function Novels() {
       <div className="align-item center figureWEB">
         {novels.map((item , index)=>{
           return(
-            <div style={{marginBottom: '4vw'}}>
+            <div id="fade" onMouseOver={toggle} style={{marginBottom: '4vw'}}>
               <img src={require(`../images/${item.image}`)} class="figure-img img-fluid rounded imagees" alt="..." />
               <p class="figure-caption" style={{width : '18vw' , direction : 'ltr' , color : '#f9a504'}}>{item['name']} - {item.author}</p>
               <p class="figure-caption" style={{width : '18vw' , direction : 'ltr' , color : 'white'}}>{item['description']}</p>

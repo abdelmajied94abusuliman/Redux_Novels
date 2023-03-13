@@ -1,14 +1,15 @@
-<?php require('./config.php');?>
-
 <?php
+require "connection.php";
 
-error_reporting(E_ALL);
-ini_set('display_error',1);
-header('Access-Control-Allow-Origin:*');
-header('Access-Control-Allow-Headers:*');
-header('Access-Control-Allow-Methods:*');
-header('Access-Control-Allow-Origin:*');
+header("Access-Control-Allow-Origin:*");
 
+header("Content-type: application/json ; charset=UTF-8");
+
+header("Access-Control-Allow-Methods:*");
+
+header("Access-Control-Max-Age:3600:*");
+
+header("Access-Control-Allow-Headers:*");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -19,7 +20,7 @@ switch($method){
         $password = $_POST['password'];
         $phone = $_POST['phone'];
         $path = explode('/' , $_SERVER['REQUEST_URI']);
-        $user_id = $path[5];
+        $user_id = $path[4];
         if($_FILES["file"] == null){
         $file = "";
         } else {
@@ -46,7 +47,7 @@ switch($method){
                 $sql = "UPDATE users SET "; 
                 if($name != ""){$sql .= "name = ? , ";}
                 if($password != ""){$sql .= " password = ? , ";}
-                if($phone != ""){$sql .= " phone = ? , ";}
+                if($phone != ""){$sql .= " mobile = ? , ";}
                 $sql .= " image = ? WHERE id = ? ";
                 $query = $conn->prepare($sql);
                 $userArray = [$name  , $password , $phone];
@@ -69,7 +70,7 @@ switch($method){
             $sql = "UPDATE users SET"; 
                 if($name != ""){$sql .= " name = ? ,";}
                 if($password != ""){$sql .= " password = ? ,";}
-                if($phone != ""){$sql .= " phone = ?,";}  
+                if($phone != ""){$sql .= " mobile = ?,";}  
                 $sql .= " WHERE id = ? ";
                 $stmt = substr_replace($sql,"",-15 , -14);
                 $query = $conn->prepare($stmt);
