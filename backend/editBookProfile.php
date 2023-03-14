@@ -14,7 +14,7 @@ switch($method){
         $auther = $_POST['auther'];
         $description = $_POST['description'];
         $path = explode('/' , $_SERVER['REQUEST_URI']);
-        $book_id = $path[5];
+        $book_id = $path[4];
         if($_FILES["file"] == null){
         $file = "";
         } else {

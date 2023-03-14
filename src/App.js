@@ -2,6 +2,7 @@ import Login from './components/Login';
 import {Routes,BrowserRouter, Route} from "react-router-dom";
 import Novels from './components/Novels';
 import AddBook from './components/AddBook';
+import EditNovel from './components/EditNovel';
 import Profile from './profile/Profile';
 import EditProfile from './profile/EditProfile';
 import Register from './components/Register';
@@ -16,6 +17,7 @@ function App() {
         <Route path="/Profile" element={<Profile />}/>
         <Route path='/profile/:id/edit' element={<EditProfile/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/EditNovel/:id/edit' element={<EditNovel/>}/>
       </Routes>
     </BrowserRouter>
   );

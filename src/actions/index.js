@@ -9,8 +9,8 @@ export const login=(email,password)=> async dispatch => {
             type: GET_ADMIN,
             payload: res.data
         })
-
     }
+    
     catch(e){
         dispatch( {
             type: ADMIN_ERROR,
@@ -19,33 +19,9 @@ export const login=(email,password)=> async dispatch => {
     }
 }
 
-export const getUsers = () => async dispatch => {
-
-    try{
-        const res = await axios.get(`https://countriesnow.space/api/v0.1/countries/capital`)
-        dispatch( {
-            type: GET_USERS,
-            payload: res.data.data
-        })
-    }
-    catch(e){
-        dispatch( {
-            type: USERS_ERROR,
-            payload: console.log(e),
-        })
-    }
-
-}
 export const logout =()=>{
     window.location.href = "/";
     return{
         type:'logout'
     }
-}
-
-export const deleting=(index)=> dispatch => {
-    dispatch( {
-        type: 'deleting',
-        index
-    })
 }

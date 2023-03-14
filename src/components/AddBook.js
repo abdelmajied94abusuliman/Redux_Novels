@@ -76,7 +76,7 @@ function AddBook() {
                 <section className="section_form">
                     <form id="consultation-form" className="feed-form" onSubmit={handleSubmit}>
                         <input  name="title" placeholder="Novel Title" type="text" id="text" value={title} onChange={(e) => setTitle(e.target.value)} /><br /><br />
-                        <input  name="title" placeholder="Novel Auther" type="text" id="text" value={auther} onChange={(e) => setAuther(e.target.value)} /><br /><br />
+                        <input  name="title" placeholder="Novel Author" type="text" id="text" value={auther} onChange={(e) => setAuther(e.target.value)} /><br /><br />
                         <input name="description" style={{height: '6vw'}}  placeholder="Novel Description"  type="text" id="text" value={description} onChange={(e) => setDescription(e.target.value)} /><br /><br />
                         <input type="file"  name="img" id="file" accept="image/*"  onChange={(e) =>setFile(e.target.files[0])} hidden/>
                         <label className="label" htmlFor="file">

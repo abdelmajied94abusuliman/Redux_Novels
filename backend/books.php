@@ -41,9 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   } elseif ($_SERVER["REQUEST_METHOD"] === "DELETE") {
     $sql = "DELETE FROM novels WHERE id = ?" ;
     $path = explode('/' , $_SERVER['REQUEST_URI']);
-    if(isset($path[4]) && is_numeric($path[5])){
+    if(isset($path[4]) && is_numeric($path[4])){
         $query = $conn->prepare($sql);
-        $query->execute([$path[5]]);
+        $query->execute([$path[4]]);
     }
   }
 
